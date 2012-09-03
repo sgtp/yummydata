@@ -1,0 +1,262 @@
+@prefix endp: <http://yummydata.org/instance/endpoint/> .
+@prefix meta: <http://yummydata.org/meta#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+endp:e1	a	meta:endpoint;
+	meta:hasEndpointString	"http://150.214.214.5/pathwaycommons/";
+	meta:hasEndpoint		<http://150.214.214.5/pathwaycommons/>;
+	rdfs:label				"Pathway Commons @Malaga"@en;
+	.
+	
+endp:e2	a	meta:endpoint;
+	meta:hasEndpointString	"http://webservice.baderlab.org:3030/pc2/";
+	meta:hasEndpoint		<http://webservice.baderlab.org:3030/pc2/>;
+	rdfs:label				"Pathway Commmons @BaderLab (Experimental)"@en;
+	.
+
+endp:e3	a	meta:endpoint;
+	meta:hasEndpointString	"http://linkedlifedata.com/sparql";
+	meta:hasEndpoint		<http://linkedlifedata.com/sparql>;
+	rdfs:label				"Linked Life Data"@en;
+	.
+	
+endp:e4	a	meta:endpoint;
+	meta:hasEndpointString	"http://sparql.bioontology.org";
+	meta:hasEndpoint		<http://sparql.bioontology.org>;
+	rdfs:label				"National Center for Biomedical Ontologies"@en;
+	.		
+
+endp:e5	a	meta:endpoint;
+	meta:hasEndpointString	"http://data.allie.dbcls.jp/sparql";
+	meta:hasEndpoint		<http://data.allie.dbcls.jp/sparql>;
+	rdfs:label				"Allie"@en;
+	.
+
+endp:e6	a	meta:endpoint;
+	meta:hasEndpointString	"http://hcls.deri.org/sparql";
+	meta:hasEndpoint		<http://hcls.deri.org/sparql>;
+	rdfs:label				"HCLS DERI"@en;
+	.
+	
+endp:e7	a	meta:endpoint;
+	meta:hasEndpointString	"http://sparql.neurocommons.org/sparql";
+	meta:hasEndpoint		<http://sparql.neurocommons.org/sparql>;
+	rdfs:label				"Neurocommons"@en;
+	.
+	
+endp:e8	a	meta:endpoint;
+	meta:hasEndpointString	"http://www.semantic-systems-biology.org/biogateway/endpoint";
+	meta:hasEndpoint		<http://www.semantic-systems-biology.org/biogateway/endpoint>;
+	rdfs:label				"BioGateway"@en;
+	.
+	
+endp:e9	a	meta:endpoint;
+	meta:hasEndpointString	"http://lsd.taxonconcept.org/sparql";
+	meta:hasEndpoint		<http://lsd.taxonconcept.org/sparql>;
+	rdfs:label				"TaxonConcepts"@en;
+	.
+	
+endp:e10	a	meta:endpoint;
+	meta:hasEndpointString	"http://www4.wiwiss.fu-berlin.de/stitch/sparql";
+	meta:hasEndpoint		<http://www4.wiwiss.fu-berlin.de/stitch/sparql>;
+	rdfs:label				"STITCH @FU Berlin"@en;
+	meta:hasParent			<http://www4.wiwiss.fu-berlin.de>;
+	.
+	
+endp:e11	a	meta:endpoint;
+	meta:hasEndpointString	"http://www4.wiwiss.fu-berlin.de/diseasome/sparql";
+	meta:hasEndpoint		<http://www4.wiwiss.fu-berlin.de/diseasome/sparql>;
+	rdfs:label				"Diseaseome @FU Berlin"@en;
+	meta:hasParent			<http://www4.wiwiss.fu-berlin.de>;
+	.				
+
+endp:e12	a	meta:endpoint;
+	meta:hasEndpointString	"http://www4.wiwiss.fu-berlin.de/drugbank/sparql";
+	meta:hasEndpoint		<http://www4.wiwiss.fu-berlin.de/drugbank/sparql>;
+	rdfs:label				"DrugBank @FU Berlin"@en;
+	meta:hasParent			<http://www4.wiwiss.fu-berlin.de>;
+	.				
+
+endp:e13	a	meta:endpoint;
+	meta:hasEndpointString	"http://rdf.myexperiment.org/sparql/";
+	meta:hasEndpoint		<http://rdf.myexperiment.org/sparql/>;
+	rdfs:label				"MyExperiment"@en;
+	.
+	
+endp:e14	a	meta:endpoint;
+	meta:hasEndpointString	"http://beta.sparql.uniprot.org";
+	meta:hasEndpoint		<http://beta.sparql.uniprot.org>;
+	rdfs:label				"Uniprot (Beta)"@en;
+	.	
+
+endp:e15	a	meta:endpoint;
+	meta:hasEndpointString	"http://www.open-biomed.org.uk/sparql/endpoint/flybase";
+	meta:hasEndpoint		<http://www.open-biomed.org.uk/sparql/endpoint/flybase>;
+	rdfs:label				"FlyBase"@en;
+	.	
+	
+endp:e16	a	meta:endpoint;
+	meta:hasEndpointString	"http://data.linkedct.org/sparql/";
+	meta:hasEndpoint		<http://data.linkedct.org/sparql/>;
+	rdfs:label				"LinkedCT"@en;
+	.		
+
+endp:e17	a	meta:endpoint;
+	meta:hasEndpointString	"http://citeseer.rkbexplorer.com/sparql/";
+	meta:hasEndpoint		<http://citeseer.rkbexplorer.com/sparql/>;
+	rdfs:label				"CiteSeer"@en;
+	.	
+
+endp:e18	a	meta:endpoint;
+	meta:hasEndpointString	"http://affymetrix.bio2rdf.org/sparql";
+	meta:hasEndpoint		<http://affymetrix.bio2rdf.org/sparql>;
+	rdfs:label				"Affymetrix (Bio2RDF)"@en;
+	meta:hasParent			<bio2rdf.org>;
+	.
+
+endp:e19	a	meta:endpoint;
+	meta:hasEndpointString	"http://cas.bio2rdf.org/sparql";
+	meta:hasEndpoint		<http://cas.bio2rdf.org/sparql>;
+	rdfs:label				"CAS (Bio2RDF)"@en;
+	meta:hasParent			<bio2rdf.org>;
+	.
+	
+endp:e20	a	meta:endpoint;
+	meta:hasEndpointString	"http://pdb.bio2rdf.org/sparql";
+	meta:hasEndpoint		<http://pdb.bio2rdf.org/sparql>;
+	rdfs:label				"PDB (Bio2RDF)"@en;
+	meta:hasParent			<bio2rdf.org>;
+	.
+
+endp:e21	a	meta:endpoint;
+	meta:hasEndpointString	"http://prosite.bio2rdf.org/sparql";
+	meta:hasEndpoint		<http://prosite.bio2rdf.org/sparql>;
+	rdfs:label				"Prosite (Bio2RDF)"@en;
+	meta:hasParent			<bio2rdf.org>;
+	.
+
+endp:e22	a	meta:endpoint;
+	meta:hasEndpointString	"http://pfam.bio2rdf.org/sparql";
+	meta:hasEndpoint		<http://pfam.bio2rdf.org/sparql>;
+	rdfs:label				"PFAM (Bio2RDF)"@en;
+	meta:hasParent			<bio2rdf.org>;
+	.
+
+endp:e23	a	meta:endpoint;
+	meta:hasEndpointString	"http://pubchem.bio2rdf.org/sparql";
+	meta:hasEndpoint		<http://pubchem.bio2rdf.org/sparql>;
+	rdfs:label				"PubChem (Bio2RDF)"@en;
+	meta:hasParent			<bio2rdf.org>;
+	.
+
+endp:e24	a	meta:endpoint;
+	meta:hasEndpointString	"http://pubmed.bio2rdf.org/sparql";
+	meta:hasEndpoint		<http://pubmed.bio2rdf.org/sparql>;
+	rdfs:label				"Pubmed (Bio2RDF)"@en;
+	meta:hasParent			<bio2rdf.org>;
+	.
+
+endp:e25	a	meta:endpoint;
+	meta:hasEndpointString	"http://sgd.bio2rdf.org/sparql";
+	meta:hasEndpoint		<http://sgd.bio2rdf.org/sparql>;
+	rdfs:label				"SGD (Bio2RDF)"@en;
+	meta:hasParent			<bio2rdf.org>;
+	.
+
+endp:e26	a	meta:endpoint;
+	meta:hasEndpointString	"http://chebi.bio2rdf.org/sparql";
+	meta:hasEndpoint		<http://chebi.bio2rdf.org/sparql>;
+	rdfs:label				"Chebi (Bio2RDF)"@en;
+	meta:hasParent			<bio2rdf.org>;
+	.
+
+endp:e27	a	meta:endpoint;
+	meta:hasEndpointString	"http://go.bio2rdf.org/sparql";
+	meta:hasEndpoint		<http://go.bio2rdf.org/sparql>;
+	rdfs:label				"GO (Bio2RDF)"@en;
+	meta:hasParent			<bio2rdf.org>;
+	.
+
+endp:e28	a	meta:endpoint;
+	meta:hasEndpointString	"http://geneid.bio2rdf.org/sparql";
+	meta:hasEndpoint		<http://geneid.bio2rdf.org/sparql>;
+	rdfs:label				"GeneID (Bio2RDF)"@en;
+	meta:hasParent			<bio2rdf.org>;
+	.
+
+endp:e29	a	meta:endpoint;
+	meta:hasEndpointString	"http://interpro.bio2rdf.org/sparql";
+	meta:hasEndpoint		<http://interpro.bio2rdf.org/sparql>;
+	rdfs:label				"InterPro (Bio2RDF)"@en;
+	meta:hasParent			<bio2rdf.org>;
+	.
+
+endp:e30	a	meta:endpoint;
+	meta:hasEndpointString	"http://cpd.bio2rdf.org/sparql";
+	meta:hasEndpoint		<http://cpd.bio2rdf.org/sparql>;
+	rdfs:label				"Kegg Compound (Bio2RDF)"@en;
+	meta:hasParent			<bio2rdf.org>;
+	.
+
+endp:e31	a	meta:endpoint;
+	meta:hasEndpointString	"http://dr.bio2rdf.org/sparql";
+	meta:hasEndpoint		<http://dr.bio2rdf.org/sparql>;
+	rdfs:label				"Kegg Drug (Bio2RDF)"@en;
+	meta:hasParent			<bio2rdf.org>;
+	.
+
+endp:e32	a	meta:endpoint;
+	meta:hasEndpointString	"http://ec.bio2rdf.org/sparql";
+	meta:hasEndpoint		<http://ec.bio2rdf.org/sparql>;
+	rdfs:label				"Kegg Enzyme (Bio2RDF)"@en;
+	meta:hasParent			<bio2rdf.org>;
+	.
+
+endp:e33	a	meta:endpoint;
+	meta:hasEndpointString	"http://gl.bio2rdf.org/sparql";
+	meta:hasEndpoint		<http://gl.bio2rdf.org/sparql>;
+	rdfs:label				"Kegg Glycan (Bio2RDF)"@en;
+	meta:hasParent			<bio2rdf.org>;
+	.
+
+endp:e34	a	meta:endpoint;
+	meta:hasEndpointString	"http://kegg.bio2rdf.org/sparql";
+	meta:hasEndpoint		<http://kegg.bio2rdf.org/sparql>;
+	rdfs:label				"Kegg Pathway (Bio2RDF)"@en;
+	meta:hasParent			<bio2rdf.org>;
+	.
+
+endp:e35	a	meta:endpoint;
+	meta:hasEndpointString	"http://rn.bio2rdf.org/sparql";
+	meta:hasEndpoint		<http://rn.bio2rdf.org/sparql>;
+	rdfs:label				"Kegg Reaction (Bio2RDF)"@en;
+	meta:hasParent			<bio2rdf.org>;
+	.
+
+endp:e36	a	meta:endpoint;
+	meta:hasEndpointString	"http://genbank.bio2rdf.org/sparql";
+	meta:hasEndpoint		<http://genbank.bio2rdf.org/sparql>;
+	rdfs:label				"Genbank (Bio2RDF)"@en;
+	meta:hasParent			<bio2rdf.org>;
+	.
+
+endp:e37	a	meta:endpoint;
+	meta:hasEndpointString	"http://obo.bio2rdf.org/sparql";
+	meta:hasEndpoint		<http://obo.bio2rdf.org/sparql>;
+	rdfs:label				"OBO (Bio2RDF)"@en;
+	meta:hasParent			<bio2rdf.org>;
+	.
+
+endp:e38	a	meta:endpoint;
+	meta:hasEndpointString	"http://omim.bio2rdf.org/sparql";
+	meta:hasEndpoint		<http://omim.bio2rdf.org/sparql>;
+	rdfs:label				"OMIM (Bio2RDF)"@en;
+	meta:hasParent			<bio2rdf.org>;
+	.
+
+endp:e39	a	meta:endpoint;
+	meta:hasEndpointString	"http://rdf.farmbio.uu.se/chembl/sparql";
+	meta:hasEndpoint		<http://rdf.farmbio.uu.se/chembl/sparql>;
+	rdfs:label				"Chembl @Uppsala"@en;
+	.
+
