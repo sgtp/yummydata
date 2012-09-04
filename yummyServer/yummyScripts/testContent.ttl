@@ -1,0 +1,14 @@
+@prefix script: <http://yummydata.org/scripts/> .
+@prefix meta: <http://yummydata.org/meta#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+script:s1 a meta:script;
+	rdfs:label "Test the content of an endpoint";
+	meta:hasCommand "testContent.py";
+	meta:valueReturned <http://yummydata.org/values/nOfGraphs>;
+	meta:valueReturned <http://yummydata.org/values/nOfTriples>;
+	meta:valueReturned <http://yummydata.org/values/nOfStatements>;
+	meta:valueReturned <http://yummydata.org/values/nOfClasses>;
+	meta:valueReturned <http://yummydata.org/values/nOfInstances>;
+	meta:valueReturned <http://yummydata.org/values/nOfProperties>;
+	.

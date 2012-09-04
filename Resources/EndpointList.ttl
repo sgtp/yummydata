@@ -259,4 +259,11 @@ endp:e39	a	meta:endpoint;
 	meta:hasEndpoint		<http://rdf.farmbio.uu.se/chembl/sparql>;
 	rdfs:label				"Chembl @Uppsala"@en;
 	.
+	
+endp:e40	a	meta:endpoint;
+	meta:hasEndpointString	"sparql.wikipathways.org";
+	meta:hasEndpoint		<sparql.wikipathways.org>;
+	rdfs:label				"WikiPathways"@en;
+	.
+		
 
