@@ -1,0 +1,2 @@
+serviceClass: org.yummydata.ui.client.EndpointService
+path: BB2CDF7AD3B1CB007AAA9953C38795DB.gwt.rpc
