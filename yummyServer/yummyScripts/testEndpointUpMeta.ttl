@@ -1,0 +1,10 @@
+@prefix script: <http://yummydata.org/scripts/> .
+@prefix meta: <http://yummydata.org/meta#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+script:s2 a meta:script;
+	rdfs:label "Test if the endpoint is up";
+	meta:hasCommand "testEndpointUp.py";
+	meta:valueReturned <http://yummydata.org/values/endpointup>;
+	meta:valueReturned <http://yummydata.org/values/pingtime>;
+	.

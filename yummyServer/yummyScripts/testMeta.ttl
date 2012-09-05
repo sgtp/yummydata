@@ -1,0 +1,9 @@
+@prefix script: <http://yummydata.org/scripts/> .
+@prefix meta: <http://yummydata.org/meta#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+script:s3 a meta:script;
+	rdfs:label "Test if relevant metadata is present";
+	meta:hasCommand "testMeta.py";
+	meta:valueReturned <http://yummydata.org/values/hasVoid>;
+	.
