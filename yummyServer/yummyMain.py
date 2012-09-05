@@ -1,14 +1,17 @@
 #!/usr/bin/python
 import os
+import subprocess
 from rdflib.graph import Graph
 from rdflib import RDF
 from rdflib import RDFS
 from rdflib import URIRef
 from time import gmtime, strftime
 
+
 dataDir="/Users/andreasplendiani/temp/yummy"
 endpointClass=URIRef("http://yummydata.org/meta#endpoint");
 scriptClass=URIRef("http://yummydata.org/meta#script");
+hasEndpointProperty=URIRef("http://yummydata.org/meta#hasEndpoint");
 hasCommandProperty=URIRef("http://yummydata.org/meta#hasCommand");
 scriptsLabels={}
 scriptsCommands={}
@@ -42,9 +45,20 @@ tStoresDesc.parse("../Resources/EndPointList.ttl",format="turtle");
 triples=tStoresDesc.triples((None,RDF.type,endpointClass))
 
 for (s,p,o) in triples:
-		currentEndpoint=s
-		print "Testing endpoint "+currentEndpoint
+		endpointURLStats=tStoresDesc.objects(s,hasEndpointProperty);
+		for endpointURL in endpointURLStats:
+			endpoint=endpointURL	
+		print "Testing endpoint "+endpoint
 		for k,v in scriptsCommands.iteritems():
-			print("executing: "+scriptsLabels[k]+" ... ")
-			
+			print("executing: "+scriptsLabels[k]+" ... "),
+			commandToExec=os.path.join(scriptsDir,scriptsCommands[k])
+			#print commandToExec
+			resultFileName=os.path.join(dataDir,timeString,os.path.splitext(scriptsCommands[k])[0])
+			#print resultFileName
+			os.system(commandToExec+" "+s+" "+endpoint+" >> "+resultFileName);
+			#print commandToExec+" "+s+" "+endpoint+" >> "+resultFileName
+			#resultFile=open(resultFileName,"a")
+			#p=subprocess.Popen([commandToExec,s,endpoint],stdout=resultFile)
+			#os.waitpid(p.pid, 0)
+			#resultFile.close()
 			print "OK"

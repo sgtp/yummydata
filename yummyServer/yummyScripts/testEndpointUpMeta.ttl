@@ -5,6 +5,6 @@
 script:s2 a meta:script;
 	rdfs:label "Test if the endpoint is up";
 	meta:hasCommand "testEndpointUp.py";
-	meta:valueReturned <http://yummydata.org/values/endpointup>;
-	meta:valueReturned <http://yummydata.org/values/pingtime>;
+	meta:valueReturned <http://yummydata.org/measures/endpointstate>;
+	meta:valueReturned <http://yummydata.org/measures/pingtime>;
 	.
