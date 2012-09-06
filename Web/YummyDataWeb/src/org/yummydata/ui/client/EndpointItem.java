@@ -20,12 +20,12 @@ public class EndpointItem extends Composite {
 	EndpointList endpointList;
 	private VerticalPanel verticalPanel_1;
 	private HorizontalPanel horizontalPanel;
-	private Label lblScoreDisplay;
+	private Label lblSparkleDisplay;
 	private VerticalPanel verticalPanel_2;
 	private Label lblScore;
 	private VerticalPanel verticalPanel_3;
 	private Label lblChange;
-	private Label lblChangeDisplay;
+	private Label lblStatusDisplay;
 	
 	/**
 	 * @wbp.parser.constructor
@@ -59,24 +59,24 @@ public class EndpointItem extends Composite {
 		horizontalPanel.add(verticalPanel_2);
 		verticalPanel_2.setWidth("50px");
 		
-		lblScore = new Label("Score");
+		lblScore = new Label("Sparkle");
 		verticalPanel_2.add(lblScore);
 		
-		lblScoreDisplay = new Label("10");
-		lblScoreDisplay.setStyleName("bigStat");
-		verticalPanel_2.add(lblScoreDisplay);
+		lblSparkleDisplay = new Label("10");
+		lblSparkleDisplay.setStyleName("bigStat");
+		verticalPanel_2.add(lblSparkleDisplay);
 		
 		verticalPanel_3 = new VerticalPanel();
 		verticalPanel_3.setStyleName("margin");
 		horizontalPanel.add(verticalPanel_3);
 		verticalPanel_3.setWidth("60px");
 		
-		lblChange = new Label("Change");
+		lblChange = new Label("Status");
 		verticalPanel_3.add(lblChange);
 		
-		lblChangeDisplay = new Label("+ 2");
-		lblChangeDisplay.setStyleName("bigStat");
-		verticalPanel_3.add(lblChangeDisplay);
+		lblStatusDisplay = new Label("OK");
+		lblStatusDisplay.setStyleName("bigStat");
+		verticalPanel_3.add(lblStatusDisplay);
 	}
 	
 	public EndpointItem(Endpoint ep, EndpointList list) { 
@@ -85,18 +85,24 @@ public class EndpointItem extends Composite {
 		this.endpointList = list;
 		lblTitle.setText(ep.getName());
 		lblURI.setText(ep.getURI());
-		lblScoreDisplay.setText(endpoint.getScore() + "");
-		lblChangeDisplay.setText(endpoint.getScoreChange() + "");
+		lblSparkleDisplay.setText(endpoint.getLastSparkle().intValue() + "");
+		
+		
+		double statScore = EndpointDetail.translateStatus(endpoint.getLastStatus());
+		if (statScore == 1.0) {
+			lblStatusDisplay.setStyleName("bigStatOK");
+			lblStatusDisplay.setText("OK");
+		} else if (statScore == 0.0) {
+			lblStatusDisplay.setStyleName("bigStatBad");
+			lblStatusDisplay.setText("NG");
+		} else {
+			lblStatusDisplay.setStyleName("bigStatQuestionable");
+			lblStatusDisplay.setText("?");
+		}
 		
 		lblTitle.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent ce) {
 				endpointList.showDetail(endpoint);
-//				DialogBox db = new DialogBox(true, true);
-//				db.add(new EndpointDetail(endpoint));
-//				db.setPopupPosition(Window.getClientWidth()/2 + Window.getScrollLeft() - 100, 
-//						Window.getClientHeight()/2 + Window.getScrollTop() - 100);
-//				
-//				db.show();
 			}
 		});
 	}
