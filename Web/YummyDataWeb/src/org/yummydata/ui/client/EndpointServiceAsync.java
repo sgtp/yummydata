@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.yummydata.ui.shared.Endpoint;
 import org.yummydata.ui.shared.TimePoint;
+import org.yummydata.ui.shared.TimeSeries;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
@@ -19,4 +20,6 @@ public interface EndpointServiceAsync {
 	
 	public void getTimeSeriesString(String name, String endpoint,
 			AsyncCallback<List<TimePoint<String>>> callback) throws Exception;
+	
+	public void getCustomSeries(String endpoint, AsyncCallback<List<TimeSeries>> callback) throws Exception;
 }

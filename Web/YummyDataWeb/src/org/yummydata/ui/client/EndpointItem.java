@@ -4,9 +4,8 @@ import org.yummydata.ui.shared.Endpoint;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
@@ -79,7 +78,7 @@ public class EndpointItem extends Composite {
 		verticalPanel_3.add(lblStatusDisplay);
 	}
 	
-	public EndpointItem(Endpoint ep, EndpointList list) { 
+	public EndpointItem(final Endpoint ep, EndpointList list) { 
 		this();
 		this.endpoint = ep;		
 		this.endpointList = list;
@@ -102,7 +101,8 @@ public class EndpointItem extends Composite {
 		
 		lblTitle.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent ce) {
-				endpointList.showDetail(endpoint);
+				History.newItem(ep.getID());
+//				endpointList.showDetail(endpoint);
 			}
 		});
 	}

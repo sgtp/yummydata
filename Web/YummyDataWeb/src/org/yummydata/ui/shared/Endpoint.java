@@ -7,7 +7,8 @@ public class Endpoint implements Serializable {
 	private String name, URI;
 	private String status;
 	private Double sparkle;
-
+	private String id;
+	
 	public Endpoint() {
 		
 	}
@@ -28,7 +29,12 @@ public class Endpoint implements Serializable {
 		return sparkle;
 	}
 	
-	public Endpoint(String name, String URI, String status, Double sparkle) {
+	public String getID() {
+		return id;
+	}
+	
+	public Endpoint(String id, String name, String URI, String status, Double sparkle) {
+		this.id = id;
 		this.name = name;
 		this.URI = URI;
 		this.sparkle = sparkle;

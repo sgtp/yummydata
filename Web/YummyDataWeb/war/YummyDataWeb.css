@@ -51,3 +51,18 @@ font-family: sans-serif;
 .margin {
  margin:2px;
 }
+.bigStatOK {
+font-size: 2em;
+font-family: sans-serif;
+color: green;
+}
+.bigStatQuestionable {
+font-size: 2em;
+font-family: sans-serif;
+color: orange;
+}
+.bigStatBad {
+font-size: 2em;
+font-family: sans-serif;
+color: red;
+}

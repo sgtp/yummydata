@@ -3,7 +3,7 @@ package org.yummydata.ui.shared;
 import java.io.Serializable;
 import java.util.Date;
 
-public class TimePoint<T> implements Serializable {
+public class TimePoint<T> implements Serializable, Comparable<TimePoint<T>> {
 
 	T value;
 	Date date;
@@ -23,5 +23,9 @@ public class TimePoint<T> implements Serializable {
 	
 	public T getValue() {
 		return value;
+	}
+
+	public int compareTo(TimePoint<T> other) {
+		return date.compareTo(other.getDate());
 	}
 }
