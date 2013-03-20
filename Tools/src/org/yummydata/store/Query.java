@@ -32,6 +32,15 @@ public class Query {
 		RepositoryConnection rc = r.getConnection();
 		return rc;
 	}
+	
+	private static void printEx(Throwable e) {
+		System.out.println(e.getMessage());
+		e.printStackTrace();
+//		if (e.getCause() != null) {
+//			System.out.println("Cause is:");
+//			printEx(e.getCause());
+//		}
+	}
 
 	public static TupleQueryResult doQuery(String query)
 			throws RepositoryException, MalformedQueryException,
@@ -47,8 +56,15 @@ public class Query {
 
 		System.out.println(query);
 		TupleQuery q = rc.prepareTupleQuery(QueryLanguage.SPARQL, query);
-		TupleQueryResult tqr = q.evaluate();
-		rc.close();
+		TupleQueryResult tqr = null;
+		try {
+			tqr = q.evaluate();		
+		} catch (QueryEvaluationException e) {
+			printEx(e);			
+			throw e;
+		} finally {
+			rc.close();
+		}
 		return tqr;
 	}
 
