@@ -1,2 +1,0 @@
-serviceClass: org.yummydata.ui.client.GreetingService
-path: 1778CE1F695EA3B69B5AF834DAAE8D24.gwt.rpc
