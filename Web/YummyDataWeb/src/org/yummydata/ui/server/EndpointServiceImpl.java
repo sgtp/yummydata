@@ -36,7 +36,7 @@ public class EndpointServiceImpl extends RemoteServiceServlet implements
 
 		final String query = "prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
 				+ "select ?x ?endpoint ?uri ?status ?sparkle where { "
-				+ "?x <http://yummydata.org/meta#hasEndpoint> ?uri. "
+				+ "?x <http://yummydata.org/meta#hasEndpointString> ?uri. "
 				+ "?x rdfs:label ?endpoint. "
 				+ "graph <http://yummydata.org/data/"
 				+ dateKey
