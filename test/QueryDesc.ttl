@@ -1,0 +1,44 @@
+@prefix yummy: 	<http://yummydata.org/lang#> .
+@prefix rdfs:	<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+yummy:noOfStatements a yummy:Test;
+yummy:prefChart "";
+yummy:query "select count (*) where{?x ?y ?z}";
+rdfs:label "Number of statements"@en;
+yummy:seed "noStats";
+yummy:appliesTo <http://dbpedia.org/sparql>;
+yummy:appliesTo <http://dc-research.eu/sparql>;
+yummy:appliesTo <http://sparql.wikipathways.org>;
+.
+
+
+yummy:noOfProperties a yummy:Test;
+yummy:prefChart "";
+yummy:query "select count (distinct ?p) where {?x ?p ?Z}";
+rdfs:label "Number of properties"@en;
+yummy:seed "noProps";
+yummy:appliesTo <http://dbpedia.org/sparql>;
+yummy:appliesTo <http://dc-research.eu/sparql>;
+yummy:appliesTo <http://sparql.wikipathways.org>;
+.
+
+yummy:noOfGraphs a yummy:Test;
+yummy:prefChart "";
+yummy:query "select count distinct (?g) where {graph ?g {?x a ?t}}";
+rdfs:label "Number of types (implicit)"@en;
+yummy:seed "noGraphs";
+yummy:appliesTo <http://dbpedia.org/sparql>;
+yummy:appliesTo <http://dc-research.eu/sparql>;
+yummy:appliesTo <http://sparql.wikipathways.org>;
+.
+
+yummy:noOfTypes a yummy:Test;
+yummy:prefChart "";
+yummy:query "select count distinct (?t) where {?x a ?t}";
+rdfs:label "Number of graphs"@en;
+yummy:seed "noTypes";
+yummy:appliesTo <http://dbpedia.org/sparql>;
+yummy:appliesTo <http://dc-research.eu/sparql>;
+yummy:appliesTo <http://sparql.wikipathways.org>;
+.

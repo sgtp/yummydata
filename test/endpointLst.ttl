@@ -1,0 +1,19 @@
+@prefix yummy: 	<http://yummydata.org/lang#> .
+@prefix rdfs:	<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<http://dbpedia.org/sparql> a yummy:endPoint;
+rdfs:label "DBpedia"@en;
+yummy:seed "dbpedia";
+.
+
+<http://dc-research.eu/sparql> a yummy:endPoint;
+rdfs:label "DC-Research"@en;
+yummy:seed "dc-research";
+.
+
+<http://sparql.wikipathways.org> a yummy:endPoint;
+rdfs:label "Wikipathways"@en;
+yummy:seed "WikiPathways";
+.
+

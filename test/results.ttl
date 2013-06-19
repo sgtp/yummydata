@@ -1,0 +1,297 @@
+@prefix yummy: 	<http://yummydata.org/lang#> .
+@prefix rdfs:	<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<http://yummydata.org/logs/dbpedia/uptime/2013-06-19> yummy:hasDate "2013-06-19";
+yummy:testing <http://dbpedia.org/sparql>;
+rdf:type yummy:upTest;
+yummy:responseTime 200;
+yummy:responseCode "202";
+.
+
+<http://yummydata.org/logs/dbpedia/uptime/2013-06-18> yummy:hasDate "2013-06-19";
+yummy:testing <http://dbpedia.org/sparql>;
+rdf:type yummy:upTest;
+yummy:responseTime 120;
+yummy:responseCode "404";
+.
+
+<http://yummydata.org/logs/dbpedia/uptime/2013-06-17> yummy:hasDate "2013-06-19";
+yummy:testing <http://dbpedia.org/sparql>;
+rdf:type yummy:upTest;
+yummy:responseTime 150;
+yummy:responseCode "202";
+.
+
+
+<http://yummydata.org/logs/dc-research/uptime/2013-06-19> yummy:hasDate "2013-06-19";
+yummy:testing <http://dc-research.eu/sparql>;
+rdf:type yummy:upTest;
+yummy:responseTime 2000;
+yummy:responseCode "404";
+.
+
+<http://yummydata.org/logs/dc-research/uptime/2013-06-18> yummy:hasDate "2013-06-19";
+yummy:testing <http://dc-research.eu/sparql>;
+rdf:type yummy:upTest;
+yummy:responseTime 1210;
+yummy:responseCode "404";
+.
+
+<http://yummydata.org/logs/dc-research/uptime/2013-06-17> yummy:hasDate "2013-06-19";
+yummy:testing <http://dc-research.eu/sparql>;
+rdf:type yummy:upTest;
+yummy:responseTime 50;
+yummy:responseCode "202";
+.
+
+<http://yummydata.org/logs/wikipathways/uptime/2013-06-19> yummy:hasDate "2013-06-19";
+yummy:testing <http://sparql.wikipathways.org>;
+rdf:type yummy:upTest;
+yummy:responseTime 200;
+yummy:responseCode "404";
+.
+
+<http://yummydata.org/logs/wikipathways/uptime/2013-06-18> yummy:hasDate "2013-06-19";
+yummy:testing <http://sparql.wikipathways.org>;
+rdf:type yummy:upTest;
+yummy:responseTime 1210;
+yummy:responseCode "404";
+.
+
+<http://yummydata.org/logs/wikipathways/uptime/2013-06-17> yummy:hasDate "2013-06-19";
+yummy:testing <http://sparql.wikipathways.org>;
+rdf:type yummy:upTest;
+yummy:responseTime 150;
+yummy:responseCode "202";
+.
+
+################
+
+<http://yummydata.org/logs/dbpedia/noStats/2013-06-19> yummy:hasDate "2013-06-19";
+yummy:testing <http://dbpedia.org/sparql>;
+rdf:type yummy:noOfStatements;
+yummy:result 200;
+.
+
+<http://yummydata.org/logs/dbpedia/noStats/2013-06-18> yummy:hasDate "2013-06-19";
+yummy:testing <http://dbpedia.org/sparql>;
+rdf:type yummy:noOfStatements;
+yummy:result 200;
+.
+
+<http://yummydata.org/logs/dbpedia/noStats/2013-06-17> yummy:hasDate "2013-06-19";
+yummy:testing <http://dbpedia.org/sparql>;
+rdf:type yummy:noOfStatements;
+yummy:result 200;
+.
+
+
+<http://yummydata.org/logs/dc-research/noStats/2013-06-19> yummy:hasDate "2013-06-19";
+yummy:testing <http://dc-research.eu/sparql>;
+rdf:type yummy:noOfStatements;
+yummy:result 200;
+.
+
+<http://yummydata.org/logs/dc-research/noStats/2013-06-18> yummy:hasDate "2013-06-19";
+yummy:testing <http://dc-research.eu/sparql>;
+rdf:type yummy:noOfStatements;
+yummy:result 200;
+.
+
+<http://yummydata.org/logs/dc-research/noStats/2013-06-17> yummy:hasDate "2013-06-19";
+yummy:testing <http://dc-research.eu/sparql>;
+rdf:type yummy:noOfStatements;
+yummy:result 200;
+.
+
+<http://yummydata.org/logs/wikipathways/noStats/2013-06-19> yummy:hasDate "2013-06-19";
+yummy:testing <http://sparql.wikipathways.org>;
+rdf:type yummy:noOfStatements;
+yummy:result 200;
+.
+
+<http://yummydata.org/logs/wikipathways/noStats/2013-06-18> yummy:hasDate "2013-06-19";
+yummy:testing <http://sparql.wikipathways.org>;
+rdf:type yummy:noOfStatements;
+yummy:result 200;
+.
+
+<http://yummydata.org/logs/wikipathways/noStats/2013-06-17> yummy:hasDate "2013-06-19";
+yummy:testing <http://sparql.wikipathways.org>;
+rdf:type yummy:noOfStatements;
+yummy:result 200;
+.
+
+####################
+
+<http://yummydata.org/logs/dbpedia/noProps/2013-06-19> yummy:hasDate "2013-06-19";
+yummy:testing <http://dbpedia.org/sparql>;
+rdf:type yummy:noOfProperties;
+yummy:result 250;
+.
+
+<http://yummydata.org/logs/dbpedia/noProps/2013-06-18> yummy:hasDate "2013-06-19";
+yummy:testing <http://dbpedia.org/sparql>;
+rdf:type yummy:noOfProperties;
+yummy:result 100;
+.
+
+<http://yummydata.org/logs/dbpedia/noProps/2013-06-17> yummy:hasDate "2013-06-19";
+yummy:testing <http://dbpedia.org/sparql>;
+rdf:type yummy:noOfProperties;
+yummy:result 220;
+.
+
+
+<http://yummydata.org/logs/dc-research/noProps/2013-06-19> yummy:hasDate "2013-06-19";
+yummy:testing <http://dc-research.eu/sparql>;
+rdf:type yummy:noOfProperties;
+yummy:result 230;
+.
+
+<http://yummydata.org/logs/dc-research/noProps/2013-06-18> yummy:hasDate "2013-06-19";
+yummy:testing <http://dc-research.eu/sparql>;
+rdf:type yummy:noOfProperties;
+yummy:result 200;
+.
+
+<http://yummydata.org/logs/dc-research/noProps/2013-06-17> yummy:hasDate "2013-06-19";
+yummy:testing <http://dc-research.eu/sparql>;
+rdf:type yummy:noOfProperties;
+yummy:result 200;
+.
+
+<http://yummydata.org/logs/wikipathways/noProps/2013-06-19> yummy:hasDate "2013-06-19";
+yummy:testing <http://sparql.wikipathways.org>;
+rdf:type yummy:noOfProperties;
+yummy:result 200;
+.
+
+<http://yummydata.org/logs/wikipathways/noProps/2013-06-18> yummy:hasDate "2013-06-19";
+yummy:testing <http://sparql.wikipathways.org>;
+rdf:type yummy:noOfProperties;
+yummy:result 200;
+.
+
+<http://yummydata.org/logs/wikipathways/noProps/2013-06-17> yummy:hasDate "2013-06-19";
+yummy:testing <http://sparql.wikipathways.org>;
+rdf:type yummy:noOfProperties;
+yummy:result 200;
+.
+
+#############################
+
+
+<http://yummydata.org/logs/dbpedia/noTypes/2013-06-19> yummy:hasDate "2013-06-19";
+yummy:testing <http://dbpedia.org/sparql>;
+rdf:type yummy:noOfTypes;
+yummy:result 250;
+.
+
+<http://yummydata.org/logs/dbpedia/noTypes/2013-06-18> yummy:hasDate "2013-06-19";
+yummy:testing <http://dbpedia.org/sparql>;
+rdf:type yummy:noOfTypes;
+yummy:result 100;
+.
+
+<http://yummydata.org/logs/dbpedia/noTypes/2013-06-17> yummy:hasDate "2013-06-19";
+yummy:testing <http://dbpedia.org/sparql>;
+rdf:type yummy:noOfTypes;
+yummy:result 220;
+.
+
+
+<http://yummydata.org/logs/dc-research/noTypes/2013-06-19> yummy:hasDate "2013-06-19";
+yummy:testing <http://dc-research.eu/sparql>;
+rdf:type yummy:noOfTypes;
+yummy:result 230;
+.
+
+<http://yummydata.org/logs/dc-research/noTypes/2013-06-18> yummy:hasDate "2013-06-19";
+yummy:testing <http://dc-research.eu/sparql>;
+rdf:type yummy:noOfTypes;
+yummy:result 210;
+.
+
+<http://yummydata.org/logs/dc-research/noTypes/2013-06-17> yummy:hasDate "2013-06-19";
+yummy:testing <http://dc-research.eu/sparql>;
+rdf:type yummy:noOfTypes;
+yummy:result 20;
+.
+
+<http://yummydata.org/logs/wikipathways/noTypes/2013-06-19> yummy:hasDate "2013-06-19";
+yummy:testing <http://sparql.wikipathways.org>;
+rdf:type yummy:noOfTypes;
+yummy:result 200;
+.
+
+<http://yummydata.org/logs/wikipathways/noTypes/2013-06-18> yummy:hasDate "2013-06-19";
+yummy:testing <http://sparql.wikipathways.org>;
+rdf:type yummy:noOfTypes;
+yummy:result 230;
+.
+
+<http://yummydata.org/logs/wikipathways/noTypes/2013-06-17> yummy:hasDate "2013-06-19";
+yummy:testing <http://sparql.wikipathways.org>;
+rdf:type yummy:noOfTypes;
+yummy:result 200;
+.
+
+############
+
+
+<http://yummydata.org/logs/dbpedia/noGraphs/2013-06-19> yummy:hasDate "2013-06-19";
+yummy:testing <http://dbpedia.org/sparql>;
+rdf:type yummy:noOfGraphs;
+yummy:result 250;
+.
+
+<http://yummydata.org/logs/dbpedia/noGraphs/2013-06-18> yummy:hasDate "2013-06-19";
+yummy:testing <http://dbpedia.org/sparql>;
+rdf:type yummy:noOfGraphs;
+yummy:result 100;
+.
+
+<http://yummydata.org/logs/dbpedia/noGraphs/2013-06-17> yummy:hasDate "2013-06-19";
+yummy:testing <http://dbpedia.org/sparql>;
+rdf:type yummy:noOfGraphs;
+yummy:result 220;
+.
+
+
+<http://yummydata.org/logs/dc-research/noGraphs/2013-06-19> yummy:hasDate "2013-06-19";
+yummy:testing <http://dc-research.eu/sparql>;
+rdf:type yummy:noOfGraphs;
+yummy:result 230;
+.
+
+<http://yummydata.org/logs/dc-research/noGraphs/2013-06-18> yummy:hasDate "2013-06-19";
+yummy:testing <http://dc-research.eu/sparql>;
+rdf:type yummy:noOfGraphs;
+yummy:result 210;
+.
+
+<http://yummydata.org/logs/dc-research/noGraphs/2013-06-17> yummy:hasDate "2013-06-19";
+yummy:testing <http://dc-research.eu/sparql>;
+rdf:type yummy:noOfGraphs;
+yummy:result 20;
+.
+
+<http://yummydata.org/logs/wikipathways/noGraphs/2013-06-19> yummy:hasDate "2013-06-19";
+yummy:testing <http://sparql.wikipathways.org>;
+rdf:type yummy:noOfGraphs;
+yummy:result 200;
+.
+
+<http://yummydata.org/logs/wikipathways/noGraphs/2013-06-18> yummy:hasDate "2013-06-19";
+yummy:testing <http://sparql.wikipathways.org>;
+rdf:type yummy:noOfGraphs;
+yummy:result 230;
+.
+
+<http://yummydata.org/logs/wikipathways/noGraphs/2013-06-17> yummy:hasDate "2013-06-19";
+yummy:testing <http://sparql.wikipathways.org>;
+rdf:type yummy:noOfGraphs;
+yummy:result 200;
+.
