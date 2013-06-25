@@ -11,7 +11,7 @@ if( !$db ) { print $db->errno() . ": " . $db->error(). "\n"; exit; }
 $db->ns( "yummy","http://yummydata.org/lang#" );
 $db->ns( "rdfs","http://www.w3.org/2000/01/rdf-schema#" );
  
-$sparql = "SELECT * WHERE {
+$sparql = "SELECT distinct * WHERE {
 ?dataPoint a yummy:sparkleResult .
 ?dataPoint yummy:testing ?endPoint .
 ?endpoint a yummy:endPoint .
@@ -78,8 +78,10 @@ print "</table>";
    	<div class="row">
    		<div class="span2">
    			<h2>Menu</h2>
-   			Register your site<br/>
-   			Contact innfo<br/>
+   			<ul>
+   			<li>About</li>
+   			<li>Register a new site</li>
+   			</ul>
    		</div>
    		<div class="span10">
    			<table class="table table-striped">

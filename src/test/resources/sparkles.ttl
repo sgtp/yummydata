@@ -6,14 +6,14 @@
 yummy:testing <http://dbpedia.org/sparql> ;
 yummy:onDate "2013-06-19";
 yummy:sparkles "12";
-yummy:stars "3";
+yummy:stars "5";
 .
 
 <http://yummydata.org/logs/dbpedia/2013-06-18> a yummy:sparkleResult;
 yummy:testing <http://dbpedia.org/sparql> ;
 yummy:onDate "2013-06-18";
 yummy:sparkles "11";
-yummy:stars "3";
+yummy:stars "4";
 .
 
 <http://yummydata.org/logs/dbpedia/2013-06-17> a yummy:sparkleResult;
@@ -27,21 +27,21 @@ yummy:stars "3";
 yummy:testing <http://dc-research.eu/sparql> ;
 yummy:onDate "2013-06-19";
 yummy:sparkles "14";
-yummy:stars "3";
+yummy:stars "2";
 .
 
 <http://yummydata.org/logs/dc-research/2013-06-18> a yummy:sparkleResult;
 yummy:testing <http://dc-research.eu/sparql> ;
 yummy:onDate "2013-06-18";
 yummy:sparkles "12";
-yummy:stars "2";
+yummy:stars "5";
 .
 
 <http://yummydata.org/logs/dc-research/2013-06-17> a yummy:sparkleResult;
 yummy:testing <http://dc-research.eu/sparql> ;
 yummy:onDate "2013-06-17";
 yummy:sparkles "15";
-yummy:stars "3";
+yummy:stars "2";
 .
 
 
@@ -49,19 +49,19 @@ yummy:stars "3";
 yummy:testing <http://sparql.wikipathways.org> ;
 yummy:onDate "2013-06-19";
 yummy:sparkles "12";
-yummy:stars "3";
+yummy:stars "1";
 .
 
 <http://yummydata.org/logs/wikiPathways/2013-06-18> a yummy:sparkleResult;
 yummy:testing <http://sparql.wikipathways.org> ;
 yummy:onDate "2013-06-18";
 yummy:sparkles "11";
-yummy:stars "1";
+yummy:stars "4";
 .
 
 <http://yummydata.org/logs/wikiPathways/2013-06-17> a yummy:sparkleResult;
 yummy:testing <http://sparql.wikipathways.org> ;
 yummy:onDate "2013-06-17";
 yummy:sparkles "15";
-yummy:stars "3";
+yummy:stars "4";
 .
