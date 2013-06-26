@@ -4,16 +4,31 @@
 
 <http://dbpedia.org/sparql> a yummy:endPoint;
 rdfs:label "DBpedia"@en;
-yummy:seed "dbpedia";
-.
-
-<http://dc-research.eu/sparql> a yummy:endPoint;
-rdfs:label "DC-Research"@en;
-yummy:seed "dc-research";
 .
 
 <http://sparql.wikipathways.org> a yummy:endPoint;
 rdfs:label "Wikipathways"@en;
-yummy:seed "WikiPathways";
 .
 
+<http://data.allie.dbcls.jp/sparql> a yummy:endPoint;
+rdfs:label "AlleleDB"@en;
+.
+
+<http://data.nature.com/sparql> a yummy:endPoint;
+rdfs:label "Data @Nature"@en;
+.
+
+<http://beta.sparql.uniprot.org> a yummy:endPoint;
+rdfs:label "Uniprot"@en;
+.
+
+<http://drugbank.bio2rdf.org/sparql> a yummy:endPoint;
+rdfs:label "DrugBank (Bio2RDF)"@en;
+.
+
+<http://citeseer.rkbexplorer.com/sparql/> a yummy:endPoint;
+rdfs:label "Citeseer"@en;
+.
+
+	      
+	      

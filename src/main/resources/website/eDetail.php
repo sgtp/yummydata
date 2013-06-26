@@ -56,7 +56,7 @@ if( !$result ) { print $db->errno() . ": " . $db->error(). "\n"; exit; }
    				$i=0;
    				while( $row = $result->fetch_array()){
    					$chart=$row['$chart'];
-   					if($chart=='') $chart="gSparkline";
+   					if($chart=='') $chart="gTimeline";
    					
    					print "<tr>";
    					print "<td>".$row['label']."</td>";
@@ -67,7 +67,7 @@ if( !$result ) { print $db->errno() . ": " . $db->error(). "\n"; exit; }
       					data-sgvizler-query=\"
 											PREFIX yummy: 	<http://yummydata.org/lang#> 
 
-											SELECT ?value WHERE {
+											SELECT ?date ?value WHERE {
 											?test yummy:testing <".$endpointc."> .
 											?test  a <".$row['test']."> .
 											?test  yummy:hasDate ?date .

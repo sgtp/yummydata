@@ -1,44 +1,46 @@
 @prefix yummy: 	<http://yummydata.org/lang#> .
+@prefix query: 	<http://yummydata.org/query#> .
 @prefix rdfs:	<http://www.w3.org/2000/01/rdf-schema#> .
 @prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 
-yummy:noOfStatements a yummy:Test;
+query:defaultPing a yummy:Test;
 yummy:prefChart "";
-yummy:query "select count (*) where{?x ?y ?z}";
-rdfs:label "Number of statements"@en;
-yummy:seed "noStats";
-yummy:appliesTo <http://dbpedia.org/sparql>;
-yummy:appliesTo <http://dc-research.eu/sparql>;
-yummy:appliesTo <http://sparql.wikipathways.org>;
+yummy:query "select ?x ?y ?z where {?x ?y ?z} limit 10";
+rdfs:label "Pinging for uptime"@en;
 .
 
-
-yummy:noOfProperties a yummy:Test;
-yummy:prefChart "";
-yummy:query "select count (distinct ?p) where {?x ?p ?Z}";
-rdfs:label "Number of properties"@en;
-yummy:seed "noProps";
-yummy:appliesTo <http://dbpedia.org/sparql>;
-yummy:appliesTo <http://dc-research.eu/sparql>;
-yummy:appliesTo <http://sparql.wikipathways.org>;
+query:void_totalNumberOfTriples a yummy:Test;
+yummy:prefChart "gTimeLine";
+yummy:query "SELECT (COUNT(*) AS ?no) { ?s ?p ?o  }";
+rdfs:label "Total number of statements"@en;
+yummy:appliesTo <http://yummydata.org/lang#all>;
+yummy:displayValue "value";
+yummy:displayValue "date";
 .
 
-yummy:noOfGraphs a yummy:Test;
-yummy:prefChart "";
-yummy:query "select count distinct (?g) where {graph ?g {?x a ?t}}";
-rdfs:label "Number of types (implicit)"@en;
-yummy:seed "noGraphs";
-yummy:appliesTo <http://dbpedia.org/sparql>;
-yummy:appliesTo <http://dc-research.eu/sparql>;
+query:void_totalNumberOfEntities a yummy:Test;
+yummy:prefChart "gSparkline";
+yummy:query "SELECT count(distinct ?s) { ?s ?p ?o }";
+rdfs:label "Total number of distinct subjects"@en;
 yummy:appliesTo <http://sparql.wikipathways.org>;
+yummy:appliesTo <http://dbpedia.org/sparql>;
+yummy:displayValue "value";
 .
 
-yummy:noOfTypes a yummy:Test;
-yummy:prefChart "";
-yummy:query "select count distinct (?t) where {?x a ?t}";
-rdfs:label "Number of graphs"@en;
-yummy:seed "noTypes";
-yummy:appliesTo <http://dbpedia.org/sparql>;
-yummy:appliesTo <http://dc-research.eu/sparql>;
+query:void_totalNumberOfPredicates a yummy:Test;
+yummy:prefChart "gSparkline";
+yummy:query "SELECT count(distinct ?p) { ?s ?p ?o }";
+rdfs:label "Total number of distinct predicates"@en;
 yummy:appliesTo <http://sparql.wikipathways.org>;
+yummy:appliesTo <http://dbpedia.org/sparql>;
+yummy:displayValue "value";
+.
+
+query:void_totalNumberOfTypes a yummy:Test;
+yummy:prefChart "gSparkline";
+yummy:query "SELECT COUNT(distinct ?o) AS ?no { ?s rdf:type ?o }";
+rdfs:label "Total number of distinct types"@en;
+yummy:appliesTo <http://sparql.wikipathways.org>;
+yummy:appliesTo <http://dbpedia.org/sparql>;
+yummy:displayValue "value";
 .
