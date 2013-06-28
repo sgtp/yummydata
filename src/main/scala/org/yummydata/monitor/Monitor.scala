@@ -3,7 +3,8 @@ package org.yummydata.monitor
 import com.hp.hpl.jena.rdf.model.Statement
 import com.hp.hpl.jena.rdf.model.ModelFactory
 
-import java.io.OutputStream
+import java.io.FileOutputStream
+import java.io.File
 
 object Monitor extends App{
   val endpoints=EndPointsTeller.getEndpointsList();
@@ -15,7 +16,7 @@ object Monitor extends App{
 	  println("***************************");
 	  //Void provided ?
 	  val voidAnalyzer=new VoidAnalyzer(e);
-	  totalResults.add(voidAnalyzer.responseModel);
+	  totalResults.add(voidAnalyzer.resultModel);
 	  
 	  val simpleQueryURI=YummyInstance.yummyQueries+"defaultPing";
 	  val simpleQuery=new Query(simpleQueryURI,e);
@@ -42,6 +43,9 @@ object Monitor extends App{
 	  }
 	
   }
-  totalResults.write(System.out,"Turtle");
+  val resultFile=new File(YummyInstance.yummyDir,YummyInstance.getShortDate+"-result.ttl")
+  val fo=new FileOutputStream(resultFile);
+  
+  totalResults.write(fo,"Turtle");
 	
 }

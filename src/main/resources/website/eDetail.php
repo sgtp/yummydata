@@ -6,7 +6,7 @@ $endpoint=$_GET['endpoint'];
 $endpointc=str_replace("\"","",$endpoint);
 #print "+++".$endpointc;
 
-$server="http://intellileaf.com:3030/yummy/query";
+$server="http://yummydata.org:3030/yummy/query";
 
 $db = sparql_connect($server );
 if( !$db ) { print $db->errno() . ": " . $db->error(). "\n"; exit; }
@@ -14,11 +14,22 @@ if( !$db ) { print $db->errno() . ": " . $db->error(). "\n"; exit; }
 $db->ns( "yummy","http://yummydata.org/lang#" );
 $db->ns( "rdfs","http://www.w3.org/2000/01/rdf-schema#" );
  
-$sparql = "SELECT * WHERE { ?test rdfs:label ?label . ?test yummy:appliesTo <".$endpointc."> . } order by ?label";
-
+$charts=array(); 
+ 
+$sparql = "SELECT ?test WHERE { ?test rdfs:label ?label . ?test yummy:appliesTo <http://yummydata.org/lang#all> . } order by ?label"; 
 $result = $db->query( $sparql ); 
 if( !$result ) { print $db->errno() . ": " . $db->error(). "\n"; exit; }
+while( $row = $result->fetch_array()){
+	array_push($charts,$row['test']);
+}
 
+ 
+$sparql = "SELECT ?test WHERE { ?test rdfs:label ?label . ?test yummy:appliesTo <".$endpointc."> . } order by ?label";
+$result = $db->query( $sparql ); 
+if( !$result ) { print $db->errno() . ": " . $db->error(). "\n"; exit; }
+while( $row = $result->fetch_array()){
+	array_push($charts,$row['test']);
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -37,7 +48,11 @@ if( !$result ) { print $db->errno() . ": " . $db->error(). "\n"; exit; }
     </script>
   </head>
   <body>
-       
+    <?php
+    	#foreach($charts as $chart){
+    	#	echo $chart."<br/>";
+    	#}
+    ?>   
     <div class="row">
     	<div class="span12">
         	<h1>Yummy Data is Here!</h1>
@@ -52,32 +67,35 @@ if( !$result ) { print $db->errno() . ": " . $db->error(). "\n"; exit; }
    		<div class="span10">
    			<table class="table>"
    				<?php
-   				
    				$i=0;
-   				while( $row = $result->fetch_array()){
-   					$chart=$row['$chart'];
-   					if($chart=='') $chart="gTimeline";
-   					
+   				foreach($charts as $chart){
+   					$sparql = "SELECT ?p ?o WHERE { <".$chart."> ?p ?o . }";
+					$innerResult = $db->query( $sparql ); 
+					if( !$innerResult ) { print $db->errno() . ": " . $db->error(). "\n"; exit; }
+					$chartType="gSparkline";
+					$queryViz="";
+					$label="a chart";
+					while( $innerRow = $innerResult->fetch_array()){
+						if($innerRow['p']=="http://yummydata.org/lang#prefChart") $chartType=$innerRow['o'];
+						if($innerRow['p']=="http://yummydata.org/lang#queryViz") $queryViz=str_replace('$$endpoint$$',"<".$endpointc.">",$innerRow['o']);
+						if($innerRow['p']=="http://www.w3.org/2000/01/rdf-schema#label") $label=$innerRow['o'];
+					}
+					if($chartType=="gTimeLine") $chartType="gTimeline"; #patch!
+					if($chartType=="gSparkLine") $chartType="gSparkline"; #patch!
+   					#echo "type: ".$chartType."<br/>";
+					#echo "query: ".$queryViz."<br/>";
+   					#echo "label: ".$label."<br/>";
    					print "<tr>";
-   					print "<td>".$row['label']."</td>";
+   					print "<td>$label</td>";
    					print "<td">
    					print "<td>";
    					print "<div id=\"test".$i."\" 
    						data-sgvizler-endpoint=\"".$server."\"
-      					data-sgvizler-query=\"
-											PREFIX yummy: 	<http://yummydata.org/lang#> 
-
-											SELECT ?date ?value WHERE {
-											?test yummy:testing <".$endpointc."> .
-											?test  a <".$row['test']."> .
-											?test  yummy:hasDate ?date .
-											?test yummy:result ?value;
-											}
-											order by ?date\"
-      					data-sgvizler-chart=\"".$chart."\"
+      					data-sgvizler-query=\"".$queryViz."\"
+      					data-sgvizler-chart=\"".$chartType."\"
       					data-sgvizler-loglevel=\"2\"
       					data-sgvizler-endpoint_output=\"xml\"
-      					style=\"width:800px; height:400px;\">
+      					style=\"width:800px; height:300px;\">
       					</div>"; 
       				//TODO we should extract date properly typed
    					print "</td>";

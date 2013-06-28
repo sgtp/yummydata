@@ -7,29 +7,19 @@ import java.util.UUID
 import com.hp.hpl.jena.rdf.model.ModelFactory
 import com.hp.hpl.jena.sparql.engine.http.QueryEngineHTTP
 import org.yummydata.monitoraux.QEWrapper
+import com.hp.hpl.jena.datatypes.xsd.XSDDatatype
 
 
 class Query (queryURI:String, endpoint:String) {
-	val resultURI=YummyInstance.yummyValues+UUID.randomUUID().toString();
-	println("Building results entity :"+resultURI);
-	val resultModel=ModelFactory.createDefaultModel();
-	val shortDate=YummyInstance.getShortDate()
-	val date=new Date()
-	resultModel.add(resultModel.createResource(resultURI),
-					resultModel.createProperty(YummyInstance.yummyLang+"hasDayDate"),
-					resultModel.createLiteral(shortDate));
-	resultModel.add(resultModel.createResource(resultURI),
-					resultModel.createProperty(YummyInstance.yummyLang+"hasDate"),
-					resultModel.createTypedLiteral(date));
-	resultModel.add(resultModel.createResource(resultURI),
-					resultModel.createProperty(YummyInstance.yummyLang+"testing"),
-					resultModel.createResource(endpoint));
-	resultModel.add(resultModel.createResource(resultURI),
-					resultModel.createProperty(YummyInstance.yummyLang+"hasTestType"),
-					resultModel.createResource(queryURI));
+	val result=new QueryResultModel(endpoint,queryURI)
+	val resultModel=result.resultModel
+	val resultURI=result.resultURI
 	val queryForDetails="Construct {<"+queryURI+"> ?p ?o} where { <"+queryURI+"> ?p ?o}";
 	val qqe=new QueryEngineHTTP(YummyInstance.yummyEndpoint,queryForDetails);
 	val queryDetailModel=qqe.execConstruct();
+	
+	
+	/*
 	println("Exection of: "+queryForDetails);
 	println("on: "+YummyInstance.yummyEndpoint);
 	println("results: ");
@@ -38,6 +28,8 @@ class Query (queryURI:String, endpoint:String) {
 		var stat=statsIter.nextStatement();
 		println(stat.getPredicate()+" - "+stat.getObject())
 	}
+	*/
+	
 	/*
 	 * Here we can extract information about the query, should we need it...
 	 */
@@ -72,14 +64,14 @@ class Query (queryURI:String, endpoint:String) {
 	  if(responseCode==200) {
 	    resultModel.add(resultModel.createResource(resultURI),
 		    			resultModel.createProperty(YummyInstance.yummyLang+"result"),
-		    			resultModel.createLiteral((new Integer(singleResult)).toString())
+		    			resultModel.createTypedLiteral(new Integer(singleResult))
 		    			);
 	  }
 		  
 	  if(responseTime>0) {
 	     resultModel.add(resultModel.createResource(resultURI),
 						resultModel.createProperty(YummyInstance.yummyLang+"responseTime"),
-						resultModel.createLiteral((new java.lang.Double(responseTime)).toString())
+						resultModel.createTypedLiteral(responseTime,XSDDatatype.XSDdouble)
 					);
 	  } 
 	  

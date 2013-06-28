@@ -3,7 +3,7 @@ require_once("libs/sparqllib.php");
 
 error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
 
-$server="www.intellileaf.com:8000/sparql/";
+$server="http://yummydata.org:3030/yummy/query";
 
 
 $db = sparql_connect($server );
@@ -11,17 +11,20 @@ if( !$db ) { print $db->errno() . ": " . $db->error(). "\n"; exit; }
 $db->ns( "yummy","http://yummydata.org/lang#" );
 $db->ns( "rdfs","http://www.w3.org/2000/01/rdf-schema#" );
  
-$sparql = "SELECT distinct * WHERE {
-?dataPoint a yummy:sparkleResult .
-?dataPoint yummy:testing ?endPoint .
-?endpoint a yummy:endPoint .
-?endpoint rdfs:label ?label .
-?dataPoint yummy:onDate \"2013-06-17\" .
-?dataPoint  yummy:sparkles ?sparkles .
-?dataPoint  yummy:stars ?stars .
-
-} 
-ORDER by desc(?sparkles) ";
+$today=date('Y-m-d') ;
+#test!!!!
+$today="2013-06-28" ;
+ 
+$sparql = "select distinct *
+where {
+?res <http://yummydata.org/lang#hasDayDate> \"".$today."\" .
+?res  <http://yummydata.org/lang#hasResultType> <http://yummydata.org/lang#analysisResults> .
+?res  <http://yummydata.org/lang#sparkles> ?score .
+?res  <http://yummydata.org/lang#stars> ?stars .
+?res   <http://yummydata.org/lang#testing> ?endpoint .
+?endpoint <http://www.w3.org/2000/01/rdf-schema#label> ?label
+}
+order by desc(?score) desc(?stars)";
 
 $result = $db->query( $sparql ); 
 if( !$result ) { print $db->errno() . ": " . $db->error(). "\n"; exit; }
@@ -57,19 +60,10 @@ print "</table>";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-	<!--
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-	<script type="text/javascript" id="sgvzlr_script" src="sgvizler-0.5/sgvizler.js"></script>
-	<script type="text/javascript">
-		sgvizler.option.namespace.npd = 'http://sws.ifi.uio.no/npd/';
-      	sgvizler.option.namespace.npdv = 'http://sws.ifi.uio.no/vocab/npd#';
-      	$(document).ready(sgvizler.go());
-    </script>
-    -->
+
   </head>
   <body>
-          
+ 
     <div class="row">
     	<div class="span12">
         	<h1>Yummy Data is Here!</h1>
@@ -101,14 +95,14 @@ print "</table>";
 						print "<tr>";
    						print "<td>".$row["label"]."</td>";
 						print "<td>".$row["endpoint"]."</td>";
-						print "<td>".$row["sparkles"]."</td>";
+						print "<td>".$row["score"]."</td>";
 						print "<td>";
 						for($i=0; $i<intval($row["stars"]);$i++) {	//TODO this should ne a numeric to begin with
 							print "<i class=\"icon-star\"></i>";
 						}
 						print "</td>";
 						//print "<td> <a href=eDtail.php?endpoint=\"".$row[endpoint]."\"><i class=\"icon-info-sign\"></a> </td>";
-						print "<td> <a class=\"icon-info-sign\" href=eDetail.php?endpoint=\"".$row[endpoint]."\"></a> </td>";
+						print "<td> <a class=\"icon-info-sign\" href=eDetail.php?endpoint=\"".$row['endpoint']."\"></a> </td>";
 
 						print "</tr>\n";
 					}

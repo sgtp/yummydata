@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>YummyData</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+	<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script type="text/javascript" id="sgvzlr_script" src="sgvizler-0.5/sgvizler.js"></script>
+	<script type="text/javascript">
+		sgvizler.option.namespace.npd = 'http://sws.ifi.uio.no/npd/';
+      	sgvizler.option.namespace.npdv = 'http://sws.ifi.uio.no/vocab/npd#';
+      	$(document).ready(sgvizler.go());
+    </script>
+  </head>
+  <body>
+       
+    <div class="row">
+    	<div class="span12">
+        	<h1>Yummy Data is Here!</h1>
+        </div>
+   	</div>
+   	<div class="row">
+   		<div class="span2">
+   			<h2>Menu</h2>
+   			Register your site<br/>
+   			Contact innfo<br/>
+   		</div>
+   		<div id="test1" 
+   						data-sgvizler-endpoint="http://yummydata.org:3030/yummy/query"
+      					data-sgvizler-query="select ?val where {?s <http://yummydata.org/lang#hasDate> ?date . ?s <http://yummydata.org/lang#hasTestType> <http://yummydata.org/query#void_totalNumberOfPredicates> . ?s <http://yummydata.org/lang#responseCode>?code . ?s  <http://yummydata.org/lang#testing> <http://sparql.wikipathways.org> . ?s <http://yummydata.org/lang#result> ?val } order by ?date"
+      					data-sgvizler-chart="gSparkline"
+      					data-sgvizler-loglevel="2"
+      					data-sgvizler-endpoint_output="xml"
+      					style="width:800px; height:300px;">
+      					</div>
+   		<div class="span10">
+   			<table class="table>"
+   				<tr><td>Total number of statements</td><td>
+   				<div id="test0" 
+   						data-sgvizler-endpoint="http://yummydata.org:3030/yummy/query"
+      					data-sgvizler-query="select ?date ?val where {?s <http://yummydata.org/lang#hasDate> ?date . ?s <http://yummydata.org/lang#hasTestType> <http://yummydata.org/query#void_totalNumberOfTriples> . ?s <http://yummydata.org/lang#responseCode>?code . ?s  <http://yummydata.org/lang#testing> <http://sparql.wikipathways.org> . ?s <http://yummydata.org/lang#result> ?val } order by ?date"
+      					data-sgvizler-chart="gTimeline"
+      					data-sgvizler-loglevel="2"
+      					data-sgvizler-endpoint_output="xml"
+      					style="width:800px; height:300px;">
+      					</div></td></tr>
+      	 				   			
+      					</table>
+   		</div>
+   	</div>
+           
+    
+    
+    <!-- Scripts at the end for faster loading -->
+    <!-- script src="http://code.jquery.com/jquery.js"></script -->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+  </body>
+</html>
