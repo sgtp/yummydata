@@ -40,6 +40,7 @@ public class QEWrapper {
 
 	public boolean execute() { 
 		System.out.println("Query execution :"+queryString+" -on- "+endpoint);
+		arrayResult=new ArrayList<String>();
 		QueryEngineHTTP qe=new QueryEngineHTTP(endpoint,queryString);
 		if(timeout>0) qe.setTimeout(timeout);
 		long startTime=System.nanoTime();
@@ -47,7 +48,7 @@ public class QEWrapper {
 		    rs = qe.execSelect();
 		    responseTime=System.nanoTime()-startTime;
 		    //We try to extract possible results straight away
-		    arrayResult=new ArrayList<String>();
+		    
 			List<String> vars=rs.getResultVars();
 			while( rs.hasNext()) {
 				QuerySolution qs=rs.next();

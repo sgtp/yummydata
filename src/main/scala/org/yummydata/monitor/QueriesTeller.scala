@@ -8,10 +8,10 @@ import java.util.ArrayList
  * It's real implementation should query a triplestore to return queries in a triple-store specific manner.
  */
 object QueriesTeller {
-	val allQueries="select ?x where {?x a <http://yummydata.org/lang#Test> . ?x <http://yummydata.org/lang#appliesTo> <http://yummydata.org/lang#all>}";
+	val allQueries="select ?x where {graph ?g {?x a <http://yummydata.org/lang#Test> . ?x <http://yummydata.org/lang#appliesTo> <http://yummydata.org/lang#all>}}";
 
 	def queriesForEndpoint(endpoint:String): Array[String] = {
-	  val endPointSpecificQuery="select ?x where {?x a <http://yummydata.org/lang#Test> . ?x <http://yummydata.org/lang#appliesTo> <"+endpoint+">}";
+	  val endPointSpecificQuery="select ?x where {graph ?g{?x a <http://yummydata.org/lang#Test> . ?x <http://yummydata.org/lang#appliesTo> <"+endpoint+">}}";
 	  println("Looking for queries for: "+endpoint);
 	  val allQuery=new QEWrapper(allQueries,YummyInstance.yummyEndpoint);
 	  val specificQuery=new QEWrapper(endPointSpecificQuery,YummyInstance.yummyEndpoint);

@@ -14,7 +14,7 @@ class Query (queryURI:String, endpoint:String) {
 	val result=new QueryResultModel(endpoint,queryURI)
 	val resultModel=result.resultModel
 	val resultURI=result.resultURI
-	val queryForDetails="Construct {<"+queryURI+"> ?p ?o} where { <"+queryURI+"> ?p ?o}";
+	val queryForDetails="Construct {<"+queryURI+"> ?p ?o} where { graph ?g{ <"+queryURI+"> ?p ?o}}";
 	val qqe=new QueryEngineHTTP(YummyInstance.yummyEndpoint,queryForDetails);
 	val queryDetailModel=qqe.execConstruct();
 	

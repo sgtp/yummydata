@@ -7,6 +7,7 @@ import org.yummydata.monitoraux.QEWrapper
 import com.hp.hpl.jena.rdf.model.ModelFactory
 import java.io.File
 import java.io.FileOutputStream
+import sys.process.Process
 
 object SparkleComputer extends App{
 	val timeWindow=5
@@ -31,43 +32,43 @@ object SparkleComputer extends App{
 	  var starsCount=0
 	  var sparklesScore:Double=0
 	  val queryForVoidFound="select count(?s)" +
-	  		"where {  " +
+	  		"where { graph ?g{ " +
 	  		"?s <http://yummydata.org/lang#testing> <"+e+"> . " +
 	  		"?s <http://yummydata.org/lang#hasTestType>  <http://yummydata.org/lang#voidTest> ." +
 	  		"?s <http://yummydata.org/lang#result> \"Found\" ." +
 	  				"?s <http://yummydata.org/lang#hasDayDate> ?d ." +
 	  				"values ?d {"+dateString+"}" +
-	  						"}";
+	  						"}}";
 	  
-	  val totalForN="select count (?s)  where { " +
+	  val totalForN="select count (?s)  where { graph ?g{" +
 	  		"?s <http://yummydata.org/lang#testing> <"+e+"> . " +
 	  				"?s <http://yummydata.org/lang#hasTestType>  <http://yummydata.org/query#defaultPing>." +
 	  				"?s <http://yummydata.org/lang#responseCode> ?c ." +
 	  				"?s <http://yummydata.org/lang#hasDayDate> ?d ." +
 	  				"values ?d {"+dateString+"}" +
-	  						"}";
+	  						"}}";
 	  
-	  val queryForN200="select count (?s)  where { " +
+	  val queryForN200="select count (?s)  where { graph ?g {" +
 	  		"?s <http://yummydata.org/lang#testing> <"+e+"> . " +
 	  				"?s <http://yummydata.org/lang#hasTestType>  <http://yummydata.org/query#defaultPing>." +
 	  				"?s <http://yummydata.org/lang#responseCode> \"200\" ." +
 	  				"?s <http://yummydata.org/lang#hasDayDate> ?d ." +
 	  				"values ?d {"+dateString+"}" +
-	  						"}";
-	  val queryForNm1="select count (?s)  where { " +
+	  						"}}";
+	  val queryForNm1="select count (?s)  where { graph ?g { " +
 	  		"?s <http://yummydata.org/lang#testing> <"+e+"> . " +
 	  				"?s <http://yummydata.org/lang#hasTestType>  <http://yummydata.org/query#defaultPing>." +
 	  				"?s <http://yummydata.org/lang#responseCode> \"-1\" ." +
 	  				"?s <http://yummydata.org/lang#hasDayDate> ?d ." +
 	  				"values ?d {"+dateString+"}" +
-	  						"}";
-	  val queryForN0="select count (?s)  where { " +
+	  						"}}";
+	  val queryForN0="select count (?s)  where { graph ?g {" +
 	  		"?s <http://yummydata.org/lang#testing> <"+e+"> . " +
 	  				"?s <http://yummydata.org/lang#hasTestType>  <http://yummydata.org/query#defaultPing>." +
 	  				"?s <http://yummydata.org/lang#responseCode> \"0\" ." +
 	  				"?s <http://yummydata.org/lang#hasDayDate> ?d ." +
 	  				"values ?d {"+dateString+"}" +
-	  						"}";
+	  						"}}";
 	  val queryForNDelay=""  
 	    
 	  val voidFoundQ=new QEWrapper(queryForVoidFound,YummyInstance.yummyEndpoint);
@@ -107,7 +108,20 @@ object SparkleComputer extends App{
 	  totalResultModel.add(resultModel)
 	}
 	val resultFile=new File(YummyInstance.yummyDir,YummyInstance.getShortDate+"-sparkles.ttl")
+	val resultGraph="http://yummydata.org/results/"+YummyInstance.getShortDate
+	
 	val fo=new FileOutputStream(resultFile);
   
 	totalResultModel.write(fo,"Turtle");
+	fo.flush();
+	
+	val sPutCommand=Seq("s-put", YummyInstance.yummyEndpointUpdate, resultGraph,resultFile)
+	val proc=Process("s-put "+YummyInstance.yummyEndpointUpdate+" "+resultGraph+" "+resultFile)
+	
+	print ("Attempting to execute: "+proc+" ... ")
+	val res=(proc !)
+	if(res==0) println("OK");
+	else println("KO")
+	
+	
 }

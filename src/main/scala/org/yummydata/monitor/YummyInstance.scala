@@ -10,6 +10,7 @@ object YummyInstance {
 	val yummyLang=yummyPrefix+"/lang#";
 	val yummyQueries=yummyPrefix+"/query#";
 	val yummyEndpoint="http://yummydata.org:3030/yummy/query"
+	val yummyEndpointUpdate="http://127.0.0.1:3030/yummy/data"
 	val yummyDirString=System.getProperty("user.home")+"/yummyResults";
 	val yummyDir=new File(yummyDirString)
 	if(!yummyDir.isDirectory()) yummyDir.mkdir()

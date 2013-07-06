@@ -6,6 +6,8 @@ import com.hp.hpl.jena.rdf.model.ModelFactory
 import java.io.FileOutputStream
 import java.io.File
 
+import sys.process.Process
+
 object Monitor extends App{
   val endpoints=EndPointsTeller.getEndpointsList();
   val totalResults=ModelFactory.createDefaultModel();
@@ -44,8 +46,19 @@ object Monitor extends App{
 	
   }
   val resultFile=new File(YummyInstance.yummyDir,YummyInstance.getShortDate+"-result.ttl")
+  val resultGraph="http://yummydata.org/data/"+YummyInstance.getShortDate
+  
   val fo=new FileOutputStream(resultFile);
   
   totalResults.write(fo,"Turtle");
+  fo.flush()
+  
+  val proc=Process("s-put "+YummyInstance.yummyEndpointUpdate+" "+resultGraph+" "+resultFile)
+  print ("Attempting to execute: "+proc+" ... ")
+  val res=(proc !)
+  if(res==0) println("OK");
+  else println("KO")
+  
+  
 	
 }

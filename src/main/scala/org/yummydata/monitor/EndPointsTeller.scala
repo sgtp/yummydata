@@ -6,7 +6,7 @@ import org.yummydata.monitoraux.QEWrapper
  * Queries the yummyData endpoint now, but could directly try to access CKAN.
  */
 object EndPointsTeller {
-	val endpointQuery="select ?x where {?x a <http://yummydata.org/lang#endPoint>}"
+	val endpointQuery="select ?x where {graph ?g{?x a <http://yummydata.org/lang#endPoint>}}"
 	def getEndpointsList(): Array[String] = {
 	  val qwrap=new QEWrapper(endpointQuery,YummyInstance.yummyEndpoint);
 	  qwrap.execute();
