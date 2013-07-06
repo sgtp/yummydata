@@ -10,21 +10,28 @@ $db = sparql_connect($server );
 if( !$db ) { print $db->errno() . ": " . $db->error(). "\n"; exit; }
 $db->ns( "yummy","http://yummydata.org/lang#" );
 $db->ns( "rdfs","http://www.w3.org/2000/01/rdf-schema#" );
- 
-$today=date('Y-m-d') ;
+
+date_default_timezone_set('Europe/London'); 
+$date=date('Y-m-d'); 
+$today=date('Y-m-d', strtotime($date .' -1 day'));
 #test!!!!
-$today="2013-06-28" ;
+#$today="2013-06-28" ;
  
 $sparql = "select distinct *
-where {
+where { graph ?g {
 ?res <http://yummydata.org/lang#hasDayDate> \"".$today."\" .
 ?res  <http://yummydata.org/lang#hasResultType> <http://yummydata.org/lang#analysisResults> .
 ?res  <http://yummydata.org/lang#sparkles> ?score .
 ?res  <http://yummydata.org/lang#stars> ?stars .
 ?res   <http://yummydata.org/lang#testing> ?endpoint .
-?endpoint <http://www.w3.org/2000/01/rdf-schema#label> ?label
+
+}
+graph ?g2 {
+	?endpoint <http://www.w3.org/2000/01/rdf-schema#label> ?label
+	}
 }
 order by desc(?score) desc(?stars)";
+
 
 $result = $db->query( $sparql ); 
 if( !$result ) { print $db->errno() . ": " . $db->error(). "\n"; exit; }

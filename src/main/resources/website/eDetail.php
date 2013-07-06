@@ -16,7 +16,7 @@ $db->ns( "rdfs","http://www.w3.org/2000/01/rdf-schema#" );
  
 $charts=array(); 
  
-$sparql = "SELECT ?test WHERE { ?test rdfs:label ?label . ?test yummy:appliesTo <http://yummydata.org/lang#all> . } order by ?label"; 
+$sparql = "SELECT ?test WHERE { graph ?g {?test rdfs:label ?label . ?test yummy:appliesTo <http://yummydata.org/lang#all> . }} order by ?label"; 
 $result = $db->query( $sparql ); 
 if( !$result ) { print $db->errno() . ": " . $db->error(). "\n"; exit; }
 while( $row = $result->fetch_array()){
@@ -24,7 +24,7 @@ while( $row = $result->fetch_array()){
 }
 
  
-$sparql = "SELECT ?test WHERE { ?test rdfs:label ?label . ?test yummy:appliesTo <".$endpointc."> . } order by ?label";
+$sparql = "SELECT ?test WHERE { graph ?g {?test rdfs:label ?label . ?test yummy:appliesTo <".$endpointc."> . }} order by ?label";
 $result = $db->query( $sparql ); 
 if( !$result ) { print $db->errno() . ": " . $db->error(). "\n"; exit; }
 while( $row = $result->fetch_array()){
@@ -69,7 +69,7 @@ while( $row = $result->fetch_array()){
    				<?php
    				$i=0;
    				foreach($charts as $chart){
-   					$sparql = "SELECT ?p ?o WHERE { <".$chart."> ?p ?o . }";
+   					$sparql = "SELECT ?p ?o WHERE { graph ?g {<".$chart."> ?p ?o . }}";
 					$innerResult = $db->query( $sparql ); 
 					if( !$innerResult ) { print $db->errno() . ": " . $db->error(). "\n"; exit; }
 					$chartType="gSparkline";
