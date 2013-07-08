@@ -30,6 +30,18 @@ rdfs:label "DrugBank (Bio2RDF)"@en;
 rdfs:label "Citeseer"@en;
 .
 
+<http://www.semantic-systems-biology.org/apo/endpoint> a yummy:endPoint;
+rdfs:label "Semantic Systems Biology"@en;
+.
+
+<http://www.ebi.ac.uk/fgpt/atlasrdf/sparql> a yummy:endPoint;
+rdfs:label "Gene expression atlas"@en;
+.
+
+<http://rdf.farmbio.uu.se/chembl/sparql> a yummy:endPoint;
+rdfs:label "Chembl @Uppsala"@en;
+.
+
 
 	      
 	      
