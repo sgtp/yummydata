@@ -18,7 +18,7 @@ public class QEWrapper {
 	private String endpoint=null;
 	private int responseCode=200; //If nothing went wrong, we assume things are ok
 	private long responseTime=0;
-	private int timeout=10000;
+	private int timeout=-1;	// TODO this can get redundant with the Scala process framework
 	private ResultSet rs=null;
 	private int intResult=-1;
 	private ArrayList<String> arrayResult=null;
