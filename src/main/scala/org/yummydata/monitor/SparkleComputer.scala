@@ -39,6 +39,14 @@ object SparkleComputer extends App{
 	  				"?s <http://yummydata.org/lang#hasDayDate> ?d ." +
 	  				"values ?d {"+dateString+"}" +
 	  						"}}";
+	  val queryForLicenseFound="select count(?s)" +
+	  		"where { graph ?g{ " +
+	  		"?s <http://yummydata.org/lang#testing> <"+e+"> . " +
+	  		"?s <http://yummydata.org/lang#hasTestType>  <http://yummydata.org/lang#voidTest> ." +
+	  		"?s <http://purl.org/dc/terms/license> ?license ." +
+	  				"?s <http://yummydata.org/lang#hasDayDate> ?d ." +
+	  				"values ?d {"+dateString+"}" +
+	  						"}}";
 	  
 	  val totalForN="select count (?s)  where { graph ?g{" +
 	  		"?s <http://yummydata.org/lang#testing> <"+e+"> . " +
@@ -71,15 +79,19 @@ object SparkleComputer extends App{
 	  						"}}";
 	  val queryForNDelay=""  
 	    
-	  val voidFoundQ=new QEWrapper(queryForVoidFound,YummyInstance.yummyEndpoint);
-	  val totalNQ =new QEWrapper(totalForN,YummyInstance.yummyEndpoint);
-	  val total200Q=new QEWrapper(queryForN200,YummyInstance.yummyEndpoint);
-	  val totalm1Q=new QEWrapper( queryForNm1,YummyInstance.yummyEndpoint);
-	  val total0Q=new QEWrapper(queryForN0,YummyInstance.yummyEndpoint);
+	  val voidFoundQ=new QEWrapper(queryForVoidFound,YummyInstance.yummyEndpoint)
+	  val licenseFoundQ=new QEWrapper(queryForLicenseFound,YummyInstance.yummyEndpoint)
+	  val totalNQ =new QEWrapper(totalForN,YummyInstance.yummyEndpoint)
+	  val total200Q=new QEWrapper(queryForN200,YummyInstance.yummyEndpoint)
+	  val totalm1Q=new QEWrapper( queryForNm1,YummyInstance.yummyEndpoint)
+	  val total0Q=new QEWrapper(queryForN0,YummyInstance.yummyEndpoint)
 	  
 	  voidFoundQ.execute();
 	  val voidFound=(voidFoundQ.extractSingleValue()>0)
 	  println("Void found: "+voidFound);
+	  licenseFoundQ.execute();
+	  val licenseFound=(licenseFoundQ.extractSingleValue()>0)
+	  println("License found: "+licenseFound);
 	  totalNQ.execute();
 	  val totalN=totalNQ.extractSingleValue()
 	  println("Total queries: "+totalN);
@@ -94,6 +106,7 @@ object SparkleComputer extends App{
 	  println("Total 0: "+total0);
 	  
 	  if(voidFound) starsCount+=1
+	  if(licenseFound) starsCount+=1
 	  sparklesScore=(total200.toDouble*1.0+totalm1.toDouble*0.0+total0.toDouble*0.0)/totalN.toDouble
 	  println("Starts: "+starsCount);
 	  println("Sparkles: "+sparklesScore);

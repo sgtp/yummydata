@@ -1,0 +1,4 @@
+<http://yummydata.org> <http://yummydata.org/lang#yummyEndpoint> <http://yummydata.org:3030/yummy/query> ;
+<http://yummydata.org> <http://yummydata.org/lang#yummyEndpointUpdate> <http://127.0.0.1:3030/yummy/data> ;
+<http://yummydata.org> <http://yummydata.org/lang#yummyDirString> "/home/yummydata/yummyResults";
+.

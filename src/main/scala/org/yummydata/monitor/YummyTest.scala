@@ -1,18 +1,22 @@
 package org.yummydata.monitor
 
 import com.hp.hpl.jena.rdf.model.ModelFactory
+import com.hp.hpl.jena.rdf.model.Model
 import java.util.UUID
 import java.util.Date
 import com.hp.hpl.jena.datatypes.xsd.XSDDatatype
-import java.util.Calendar
 
 /**
- * Provides the stub for a test-result in RDF
+ * Common to all test types (essentially test metadata)
  */
-class QueryResultModel (endpoint:String, queryURI:String) {
+abstract class YummyTest (testURI:String,endpoint:String) {
+	val resultURI=YummyInstance.yummyValues+UUID.randomUUID().toString() 
+	//println("Building test entity :"+resultURI+"\n"+"For endpoint "+endpoint+"\n"+"testURI: "+testURI);
+	
+	
 	val resultModel=ModelFactory.createDefaultModel()
-	val resultURI=YummyInstance.yummyValues+UUID.randomUUID().toString();
-	println("Building results entity :"+resultURI);
+	
+	// Matadata init
 	val shortDate=YummyInstance.getShortDate()
 	val date=new Date()
 	resultModel.add(resultModel.createResource(resultURI),
@@ -26,5 +30,20 @@ class QueryResultModel (endpoint:String, queryURI:String) {
 					resultModel.createResource(endpoint));
 	resultModel.add(resultModel.createResource(resultURI),
 					resultModel.createProperty(YummyInstance.yummyLang+"hasTestType"),
-					resultModel.createResource(queryURI));
+					resultModel.createResource(testURI));
+	
+	/**
+	 * convenience method for children to mark test as completed
+	 */
+	def markAsCompleted(m:Model) ={
+		m.add(m.createResource(resultURI),
+					m.createProperty(YummyInstance.yummyLang+"hasTerminated"),
+					resultModel.createTypedLiteral("True",XSDDatatype.XSDboolean));
+	} 
+	/**
+	 * Must be implemented by the actual test
+	 */
+	def execute()
+	
+	
 }

@@ -1,0 +1,3 @@
+<http://127.0.0.1> <http://yummydata.org/lang#yummyEndpoint> <http://127.0.0.1:3030/yummy/query> .
+<http://127.0.0.1> <http://yummydata.org/lang#yummyEndpointUpdate> <http://127.0.0.1:3030/yummy/data> .
+<http://127.0.0.1> <http://yummydata.org/lang#yummyDirString> "/Users/andreasplendiani/yummyResults".

@@ -1,0 +1,43 @@
+@prefix yummy: 	<http://yummydata.org/lang#> .
+@prefix query: 	<http://yummydata.org/query#> .
+@prefix rdfs:	<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+query:defaultPing a yummy:Test;
+yummy:prefChart "";
+yummy:query "select ?x ?y ?z where {?x ?y ?z} limit 10";
+rdfs:label "Pinging for uptime"@en;
+.
+
+query:void_totalNumberOfTriples a yummy:Test;
+yummy:prefChart "gTimeline";
+yummy:query "SELECT (COUNT(*) AS ?no) { ?s ?p ?o  }";
+yummy:queryViz "select ?date ?val where {graph ?g {?s <http://yummydata.org/lang#hasDate> ?date . ?s <http://yummydata.org/lang#hasTestType> <http://yummydata.org/query#void_totalNumberOfTriples> . ?s <http://yummydata.org/lang#responseCode>?code . ?s  <http://yummydata.org/lang#testing> $$endpoint$$ . ?s <http://yummydata.org/lang#result> ?val }} order by ?date";
+rdfs:label "Total number of statements"@en;
+yummy:appliesTo <http://yummydata.org/lang#all>;
+
+.
+
+query:void_totalNumberOfEntities a yummy:Test;
+yummy:prefChart "gSparkline";
+yummy:query "SELECT count(distinct ?s) { ?s ?p ?o }";
+yummy:queryViz "select ?val where {graph ?g {?s <http://yummydata.org/lang#hasDate> ?date . ?s <http://yummydata.org/lang#hasTestType> <http://yummydata.org/query#void_totalNumberOfEntities> . ?s <http://yummydata.org/lang#responseCode>?code . ?s  <http://yummydata.org/lang#testing> $$endpoint$$ . ?s <http://yummydata.org/lang#result> ?val }} order by ?date";
+rdfs:label "Total number of distinct subjects"@en;
+yummy:appliesTo <http://yummydata.org/lang#all>;
+.
+
+query:void_totalNumberOfPredicates a yummy:Test;
+yummy:prefChart "gSparkline";
+yummy:query "SELECT count(distinct ?p) { ?s ?p ?o }";
+yummy:queryViz "select ?val where {graph ?g{?s <http://yummydata.org/lang#hasDate> ?date . ?s <http://yummydata.org/lang#hasTestType> <http://yummydata.org/query#void_totalNumberOfPredicates> . ?s <http://yummydata.org/lang#responseCode>?code . ?s  <http://yummydata.org/lang#testing> $$endpoint$$ . ?s <http://yummydata.org/lang#result> ?val }} order by ?date";
+rdfs:label "Total number of distinct predicates"@en;
+yummy:appliesTo <http://yummydata.org/lang#all>;
+.
+
+query:void_totalNumberOfTypes a yummy:Test;
+yummy:prefChart "gSparkline";
+yummy:query "SELECT COUNT(distinct ?o) AS ?no { ?s rdf:type ?o }";
+yummy:queryViz "select ?val where {graph ?g {?res <http://yummydata.org/lang#hasDate> ?date . ?res <http://yummydata.org/lang#hasTestType> <http://yummydata.org/query#void_totalNumberOfTypes> . ?res  <http://yummydata.org/lang#result> ?val . ?res  <http://yummydata.org/lang#testing> $$endpoint$$}} order by ?date";
+rdfs:label "Total number of distinct types"@en;
+yummy:appliesTo <http://yummydata.org/lang#all>;
+.
