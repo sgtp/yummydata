@@ -55,14 +55,18 @@ while( $row = $result->fetch_array()){
     ?>   
     <div class="row">
     	<div class="span12">
-        	<h1>Yummy Data is Here!</h1>
+        	<h1>Yummy Data, details for: 
+        	<?php
+        	echo $endpointc
+        	?>
+        	</h1>
         </div>
    	</div>
    	<div class="row">
    		<div class="span2">
    			<h2>Menu</h2>
-   			Register your site<br/>
-   			Contact innfo<br/>
+   			Resgiter your site<br/>
+   			Contact info<br/>
    		</div>
    		<div class="span10">
    			<table class="table>"
