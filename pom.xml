@@ -5,7 +5,8 @@
   <artifactId>yummyOmni</artifactId>
   <name>YummyData</name>
   <properties>
-  	<scala.version>2.9.2</scala.version>
+<!--   	<scala.version>2.9.2</scala.version> -->
+  	<scala.version>2.11.4</scala.version>
   	<jena.version>2.10.1</jena.version>
   </properties>
   <dependencies>
