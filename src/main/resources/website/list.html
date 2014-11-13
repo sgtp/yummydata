@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css"/>
+    <script src="d3/d3.v3.min.js"></script>
+    <script src="d3sparql/d3sparql.js"></script>
+    <script>
+    function exec() {
+      var endpoint = d3.select("#endpoint").property("value")
+      var sparql = d3.select("#sparql").property("value")
+      d3sparql.query(endpoint, sparql, render)
+    }
+    function render(json) {
+      d3sparql.htmltable(json)
+    }
+    function toggle() {
+      d3sparql.toggle()
+    }
+    </script>
+  </head>
+  <body>
+    <div id="query" style="margin: 10px">
+      <h1>Yummydata results list from fuseki, using d3sparql - derived from d3htmltable example...</h1>
+      <form class="form-inline">
+        <label>SPARQL endpoint:</label>
+        <div class="input-append">
+          <input id="endpoint" class="span5" value="http://www.yummydata.org:3040/yummy/query" type="text">
+          <button class="btn" type="button" onclick="exec()">Query</button>
+          <button class="btn" type="button" onclick="toggle()"><i id="button" class="icon-chevron-up"></i></button>
+        </div>
+      </form>
+      <textarea id="sparql" class="span9" rows=15>
+PREFIX yum: <http://yummydata.org/lang#>
+select ?endpoint ?sparkles_score ?stars ?date 
+FROM <http://yummydata.org/results/2014-06-29>
+FROM <http://yummydata.org/results/2014-06-30>
+WHERE {
+  ?result yum:testing ?endpoint .
+  ?result yum:sparkles ?sparkles_score .
+  ?result yum:stars ?stars .
+  ?result yum:hasDate ?date .
+}
+ORDER BY ?endpoint
+      </textarea>
+    </div>
+  </body>
+</html>
